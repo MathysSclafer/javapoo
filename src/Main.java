@@ -37,12 +37,6 @@ public class Main {
             System.out.println(elmnt);
         }
 
-        //on creer une catégorie de produit//
-
-        Category category1 = new Category("cosmétique", "anti-biotique", lst_produit);
-
-
-
         //on creer un scanner//
 
         Scanner scanner = new Scanner(System.in);
