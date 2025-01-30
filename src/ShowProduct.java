@@ -76,11 +76,11 @@ public class ShowProduct {
         String category = scanner.nextLine();
 
         // Création et ajout du produit
-        Products newProduct = new Products(productList.size() + 1, name, price, stock, description, category);
-        productList.add(newProduct);
+        Products newProduct = new Products(pharmacy.getProducts().size() + 1, name, price, stock, description, category);
+        pharmacy.getProducts().add(newProduct);
 
         // Tri après ajout
-        quickSort(productList, 0, productList.size() - 1);
+        quickSort(pharmacy.getProducts(), 0, productList.size() - 1);
 
         // Sauvegarde
         saveProducts(pharmacy);
@@ -140,7 +140,7 @@ public class ShowProduct {
         System.out.print("\nQuel produit voulez-vous supprimer ? ");
         String productName = scanner.nextLine();
 
-        Iterator<Products> iterator = productList.iterator();
+        Iterator<Products> iterator = pharmacy.getProducts().iterator();
         while (iterator.hasNext()) {
             Products product = iterator.next();
             if (product.getName().equalsIgnoreCase(productName)) {
