@@ -28,6 +28,10 @@
   "type" : "urgent",
   "customerName" : "Michel",
   "products" : [ {
+    "quantity" : 100,
+    "name" : "Bain de bouche antiseptique",
+    "id" : 12
+  }, {
     "quantity" : 10,
     "name" : "Tramadol",
     "id" : 6
@@ -35,10 +39,6 @@
     "quantity" : 50,
     "name" : "Gel nettoyant visage",
     "id" : 8
-  }, {
-    "quantity" : 40,
-    "name" : "Oméga-3",
-    "id" : 15
   }, {
     "quantity" : 10,
     "name" : "Vitamine C",
@@ -48,15 +48,25 @@
     "name" : "Vitamine D",
     "id" : 14
   }, {
-    "quantity" : 100,
-    "name" : "Bain de bouche antiseptique",
-    "id" : 12
+    "quantity" : 40,
+    "name" : "Oméga-3",
+    "id" : 15
   } ]
 }, {
   "date" : "30-01-2025 21:36:53",
   "pharmacistName" : "Roger",
   "type" : "urgent",
   "customerName" : "Paul",
+  "products" : [ {
+    "quantity" : 2,
+    "name" : "Azithromycine",
+    "id" : 2
+  } ]
+}, {
+  "date" : "30-01-2025 21:43:16",
+  "pharmacistName" : "Roger",
+  "type" : "standard",
+  "customerName" : "Michel",
   "products" : [ {
     "quantity" : 2,
     "name" : "Azithromycine",

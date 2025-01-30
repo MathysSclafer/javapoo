@@ -128,7 +128,7 @@ public class ShowProduct {
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         File file = new File("stocks_pharma.json");
         try {
-            objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, productList);
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, pharmacy.getProducts());
             System.out.println("✅ Produits sauvegardés avec succès !");
         } catch (IOException e) {
             System.err.println("❌ Erreur lors de l'écriture du fichier : " + e.getMessage());
