@@ -15,34 +15,30 @@ public class Charge {
 
         try {
             // Lire le fichier JSON
-            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("src/stocks_pharma.json"));
+            Object obj = parser.parse(new FileReader("stocks_pharma.json"));
 
-            // Récupérer l'objet pharmacie
-            JSONObject pharmacie = (JSONObject) jsonObject.get("pharmacie");
+            if (obj instanceof JSONArray) {
+                JSONArray productsArray = (JSONArray) obj;
 
-            // Vérification si la structure JSON est valide
-            if (pharmacie == null || !pharmacie.containsKey("produits")) {
-                System.out.println("❌ Erreur : Structure JSON invalide !");
-                return productsList;  // Retourne une liste vide en cas d'erreur
-            }
+                // Parcourir les produits
+                for (Object productObject : productsArray) {
+                    JSONObject productJSON = (JSONObject) productObject;
 
-            // Parcourir les catégories de produits
-            JSONArray categories = (JSONArray) pharmacie.get("produits");
-            for (Object categoryProduct : categories) {
-                JSONObject categorys = (JSONObject) categoryProduct;
+                    Products product = new Products(
+                            ((Long) productJSON.get("id")).intValue(),
+                            (String) productJSON.get("name"),
+                            (Double) productJSON.get("price"),
+                            ((Long) productJSON.get("stock")).intValue(),
+                            (String) productJSON.get("description"),
+                            (productJSON.get("category") != null) ? (String) productJSON.get("category") : "Non catégorisé" // Gestion du `null`
+                    );
 
-                // Récupérer le nom de la catégorie et sous-catégorie
-                String category = (String) categorys.get("categorie");
-
-                // Récupérer les produits de la sous-catégorie
-                JSONArray produits = (JSONArray) categorys.get("produits");
-
-                // Parcourir les produits et les ajouter à la liste
-                for (Object productObject : produits) {
-                    Products elmnt = getProducts((JSONObject) productObject, category);
-                    productsList.add(elmnt);
+                    productsList.add(product);
                 }
+            } else {
+                System.out.println("❌ Erreur : Le fichier JSON doit être un tableau de produits !");
             }
+
         } catch (IOException e) {
             System.out.println("❌ Erreur de lecture du fichier JSON !");
             e.printStackTrace();
@@ -51,18 +47,6 @@ public class Charge {
             e.printStackTrace();
         }
 
-        return productsList;  // Retourne la liste des produits
-    }
-
-    private static Products getProducts(JSONObject productObject, String category ) {
-        return new Products(
-                ((Long) productObject.get("id")).intValue(),  // ID
-                (String) productObject.get("nom"),           // Nom
-                (Double) productObject.get("prix"),          // Prix
-                ((Long) productObject.get("quantiteStock")).intValue(),  // Quantité en stock
-                (String) productObject.get("description"),   // Description
-                (String) productObject.get("category")
-                // Description
-        );
+        return productsList;
     }
 }

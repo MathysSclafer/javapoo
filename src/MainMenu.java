@@ -48,21 +48,6 @@ public class MainMenu {
                     System.out.println(RED + "Merci d'avoir utilisé l'application !" + RESET);
                     System.exit(0);
                     break;
-                case "4":
-                    System.out.println("commande");
-                    Pharmacy pharmacy = new Pharmacy("salit","salit");
-                    pharmacy.getProducts();
-                    Command command = new Command(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date()));
-                    if (!command.startCommand(pharmacy)) {
-                        command = null;
-                        System.out.println("La commande a bien été supprimée.");
-                    } else {
-                        System.out.println("Commande confirmée!");
-                    }
-                    break;
-                case "5":
-                    ShowProduct showProduct = new ShowProduct();
-                    showProduct.show();
                 default:
                     System.out.println(RED + "❌ Choix invalide !" + RESET);
             }

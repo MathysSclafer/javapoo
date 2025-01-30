@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Admin extends User {
+    Pharmacy pharmacy = new Pharmacy("Pharmacie","13 rue");
     public Admin(String name, String firstName, String email, String password, String uid, String status) {
         super(name, firstName, email, password, uid, status);
     }
@@ -35,7 +36,7 @@ public class Admin extends User {
                     "                                                                     |_|            " + RESET);
 
             System.out.println("\n" + GREEN + "===== MENU Admin =====" + RESET);
-            System.out.println("1. Faire une vente");
+            System.out.println("1. Panel produit");
             System.out.println("2. Historique des ventes");
             System.out.println("3. Stock critique");
             System.out.println("4. Accès au panel utilisateurs");
@@ -46,13 +47,17 @@ public class Admin extends User {
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1":
-                    System.out.println("\n" + GREEN + "Faire une vente.." + RESET);
+                    System.out.println("\n" + BLUE + "Panel produit.." + RESET);
+                    ShowProduct show = new ShowProduct();
+                    show.show();
                     break;
                 case "2":
-                    System.out.println("\n" + GREEN + "Historique des ventes.." + RESET);
+                    System.out.println("\n" + YELLOW + "Historique des ventes.." + RESET);
+                    CommandHistory.historyCommand(pharmacy);
                     break;
                 case "3":
                     System.out.println("\n" + GREEN + "Stock critique.." + RESET);
+                    ProductSorter.insertionSortAndPrint(pharmacy.getProducts());
                     break;
                 case "4":
                     System.out.println("\n" + YELLOW + "Accès au panel utilisateurs..." + RESET);

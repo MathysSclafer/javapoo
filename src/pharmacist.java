@@ -46,11 +46,19 @@ public class pharmacist extends User {
 
             String choice = scanner.nextLine();
             switch (choice) {
-                case "1":
-
+                case "1" :
+                    System.out.println("\n" + BLUE + "Faire une vente.." + RESET);
+                    pharmacy.getProducts();
+                    Command command = new Command(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date()));
+                    if (!command.startCommand(pharmacy)) {
+                        command = null;
+                        System.out.println("La commande a bien été supprimée.");
+                    } else {
+                        System.out.println("Commande confirmée!");
+                    }
                     break;
                 case "2":
-                    System.out.println("\n" + GREEN + "Historique des ventes.." + RESET);
+                    System.out.println("\n" + YELLOW + "Historique des ventes.." + RESET);
                     CommandHistory.historyCommand(pharmacy);
                     break;
                 case "3":

@@ -9,7 +9,7 @@
   "name" : "root@gmail.com",
   "password" : "Root1234",
   "email" : "root@gmail.com",
-  "status" : "pharmacist",
+  "status" : "client",
   "firstName" : "root@gmail.com",
   "uid" : "7325b64a-db01-4993-8055-76cf62bd891b"
 }, {
@@ -33,4 +33,11 @@
   "status" : "admin",
   "firstName" : "ddd",
   "uid" : "ee7b8e00-46bc-45e6-8f00-8080130c7238"
+}, {
+  "name" : "test2",
+  "password" : "Test1234",
+  "email" : "test@gmail.com",
+  "status" : "admin",
+  "firstName" : "test2",
+  "uid" : "0758b4a5-145b-4bb9-a5a2-080b58b69c32"
 } ]

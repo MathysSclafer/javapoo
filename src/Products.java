@@ -111,7 +111,6 @@ public class Products extends Global{
 
     public void removeFromStock(int quantity) {
         stock -= quantity;
-
     }
 
     public void checkStock() {
