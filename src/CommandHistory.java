@@ -23,7 +23,7 @@ public class CommandHistory extends Global {
             }
 
             System.out.println("Produits: ");
-            for (Map.Entry<Product, Integer> entry : command.getProducts().entrySet()) {
+            for (Map.Entry<Products, Integer> entry : command.getProducts().entrySet()) {
                 System.out.println(entry.getValue() + " " + entry.getKey().getName());
             }
 

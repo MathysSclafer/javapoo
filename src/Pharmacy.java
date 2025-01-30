@@ -4,7 +4,7 @@ import java.util.List;
 public class Pharmacy{
     private String name;
     private String address;
-    private List<Product> products = new ArrayList<>();
+    private List<Products> products = new ArrayList<>();
     private List<Command> commands = new ArrayList<>();
 
 
@@ -17,7 +17,7 @@ public class Pharmacy{
         return name;
     }
 
-    public void addProductToPharmacy(Product product) {
+    public void addProductToPharmacy(Products product) {
         products.add(product);
     }
 
@@ -29,7 +29,7 @@ public class Pharmacy{
         return commands;
     }
 
-    public List<Product> getProducts() {
+    public List<Products> getProducts() {
         return products;
     }
 }

@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Charge {
-    public static void main(String[] args) {
+    public void charge() {
+
         JSONParser parser = new JSONParser();
 
         try {
@@ -36,15 +37,7 @@ public class Charge {
 
                 // Parcourir les produits et les ajouter à la liste
                 for (Object productObject : produits) {
-                    JSONObject produit = (JSONObject) productObject;
-                    Products elmnt = new Products(
-                            ((Long) produit.get("id")).intValue(),  // ID
-                            (String) produit.get("nom"),           // Nom
-                            (Double) produit.get("prix"),          // Prix
-                            ((Long) produit.get("quantiteStock")).intValue(),  // Quantité en stock
-                            (String) produit.get("description"),   // Description
-                            categorie  // Catégorie sous forme de String
-                    );
+                    Products elmnt = getProducts((JSONObject) productObject, categorie);
 
                     productsList.add(elmnt);
                 }
@@ -53,7 +46,7 @@ public class Charge {
             // Affichage des produits et de leurs catégories
             for (Products product : productsList) {
                 System.out.println("\nProduit : " + product.getName());
-                System.out.println("Catégorie : " + product.getCategorie());
+                System.out.println("Catégorie : " + product.getCategory());
                 System.out.println("Prix : " + product.getPrice());
                 System.out.println("Quantité en stock : " + product.getStock());
                 System.out.println("Description : " + product.getDescription());
@@ -62,5 +55,18 @@ public class Charge {
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    private static Products getProducts(JSONObject productObject, String categorie) {
+        JSONObject produit = productObject;
+        Products elmnt = new Products(
+                ((Long) produit.get("id")).intValue(),  // ID
+                (String) produit.get("nom"),           // Nom
+                (Double) produit.get("prix"),          // Prix
+                ((Long) produit.get("quantiteStock")).intValue(),  // Quantité en stock
+                (String) produit.get("description"),   // Description
+                categorie  // Catégorie sous forme de String
+        );
+        return elmnt;
     }
 }

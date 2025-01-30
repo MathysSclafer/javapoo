@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Command extends Global{
     private String date;
-    private Map<Product, Integer> products = new HashMap<>(); // Stocker Product au lieu de String
+    private Map<Products, Integer> products = new HashMap<>(); // Stocker Product au lieu de String
     private String type;
     private String pharmacistName;
     private String customerName;
@@ -46,7 +46,7 @@ public class Command extends Global{
     }
 
     public void askForProduct(Pharmacy pharmacy) {
-        Product product = null;
+        Products product = null;
         int quantity;
 
         while (product == null) {
@@ -123,8 +123,8 @@ public class Command extends Global{
                 System.out.println("Produits dans le panier :");
 
                 double totalPrice = 0;
-                for (Map.Entry<Product, Integer> entry : this.products.entrySet()) {
-                    Product product = entry.getKey();
+                for (Map.Entry<Products, Integer> entry : this.products.entrySet()) {
+                    Products product = entry.getKey();
                     int quantity = entry.getValue();
 
                     if (quantity > 1) {
@@ -152,7 +152,7 @@ public class Command extends Global{
         }
     }
 
-    public Map<Product, Integer> getProducts() {
+    public Map<Products, Integer> getProducts() {
         return products;
     }
 
