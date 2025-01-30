@@ -174,6 +174,7 @@ public class Command extends Global{
                 System.out.println("-------------------------------------------");
                 System.out.println(pharmacy.getCommands());
                 saveCommand(pharmacy);
+                Statistic.createCsvStatistic(pharmacy);
                 return true;
             } else {
                 System.out.println("Veuillez entrer une réponse valide !");

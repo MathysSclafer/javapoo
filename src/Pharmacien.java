@@ -7,6 +7,8 @@ public class Pharmacien extends User {
 
     Products doliprane = new Products(0, "doliprane",
             100, 5, "jdiada", "Medicamet");
+    Products dafalgan = new Products(1, "dafalgan",
+            14, 30, "jdiada", "Medicamet");
     public Pharmacien(String name, String firstName, String email, String password, String uid, String status) {
         super(name, firstName, email, password, uid, status);
     }
@@ -21,6 +23,7 @@ public class Pharmacien extends User {
         boolean quit = false;
 
         pharmacy.addProductToPharmacy(doliprane);
+        pharmacy.addProductToPharmacy(dafalgan);
 
         Command.loadCommands(pharmacy);
 
