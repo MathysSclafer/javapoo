@@ -111,14 +111,6 @@
   "category" : "Non catégorisé",
   "inStock" : true
 }, {
-  "id" : 14,
-  "name" : "Vitamine D",
-  "price" : 8.49,
-  "stock" : 90,
-  "description" : "Améliore la santé des os et du système immunitaire.",
-  "category" : "Non catégorisé",
-  "inStock" : true
-}, {
   "id" : 15,
   "name" : "dzdz",
   "price" : 222.0,
