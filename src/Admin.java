@@ -62,11 +62,33 @@ public class Admin extends User {
                 case "5":
                     System.out.println("\n" + YELLOW + "Création d'un compte..." + RESET);
                     Authentication authentication = new Authentication();
-                    authentication.createUser();
+                    String status = "Client";
+                    System.out.println("Voulez vous créer un :");
+                    System.out.println("1 : Client ");
+                    System.out.println("2 : Pharmacien");
+                    System.out.println("3 : Admin");
+                    String choiceperm = scanner.nextLine();
+                    switch (choiceperm) {
+                        case "1":
+                            status = "client";
+                            break;
+                        case "2":
+                            status = "pharmacist";
+                            break;
+                        case "3":
+                            status = "admin";
+                            break;
+                        default:
+                            status = "client";
+                            break;
+                    }
+                    authentication.createUser(status);
                     break;
                 case "6":
                     System.out.println("\n" + RED + "Déconnexion..." + RESET);
                     quit = true;
+                    MainMenu mainMenu = new MainMenu();
+                    mainMenu.mainMenu();
                     break;
                 default:
                     System.out.println("❌ " + RED + "Choix invalide !" + RESET);

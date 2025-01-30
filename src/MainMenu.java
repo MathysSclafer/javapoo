@@ -37,7 +37,7 @@ public class MainMenu {
             switch (choice) {
                 case "1":
                     System.out.println(GREEN + "Création d'un compte..." + RESET);
-                    auth.createUser();
+                    auth.createUser("client");
                     break;
                 case "2":
                     System.out.println(GREEN + "Connexion..." + RESET);

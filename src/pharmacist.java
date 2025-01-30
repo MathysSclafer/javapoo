@@ -2,13 +2,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Pharmacien extends User {
+public class pharmacist extends User {
     Pharmacy pharmacy = new Pharmacy("Pharmacie", "13 rue");
-    public Pharmacien(String name, String firstName, String email, String password, String uid, String status) {
+    public pharmacist(String name, String firstName, String email, String password, String uid, String status) {
         super(name, firstName, email, password, uid, status);
     }
 
-    public Pharmacien() {
+    public pharmacist() {
         super();
     }
 

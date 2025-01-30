@@ -16,7 +16,21 @@
   "name" : "ggg",
   "password" : "GGG123456",
   "email" : "gg@gmail.com",
-  "status" : "pharmacien",
+  "status" : "admin",
   "firstName" : "ggg",
   "uid" : "bdf0be71-2600-4033-bd00-5fbc76b21d34"
+}, {
+  "name" : "ddd",
+  "password" : "Dddd2905.",
+  "email" : "ddd@gmail.com",
+  "status" : "client",
+  "firstName" : "ddd",
+  "uid" : "e3cf5366-85e4-4037-aca7-04a093d7eb70"
+}, {
+  "name" : "ddd",
+  "password" : "Root1234",
+  "email" : "fff@gmail.com",
+  "status" : "admin",
+  "firstName" : "ddd",
+  "uid" : "ee7b8e00-46bc-45e6-8f00-8080130c7238"
 } ]
