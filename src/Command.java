@@ -177,7 +177,7 @@ public class Command extends Global{
                 saveCommand(pharmacy);
                 Statistic.createCsvStatistic(pharmacy);
                 ShowProduct showProduct = new ShowProduct();
-                showProduct.saveProducts();
+                showProduct.saveProducts(pharmacy);
                 return true;
             } else {
                 System.out.println("Veuillez entrer une réponse valide !");

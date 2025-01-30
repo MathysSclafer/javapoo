@@ -65,7 +65,7 @@ public class Admin extends User {
                 case "2":
                     System.out.println("\n" + BLUE + "Panel produit.." + RESET);
                     ShowProduct show = new ShowProduct();
-                    show.show();
+                    show.show(pharmacy);
                     break;
                 case "3":
                     System.out.println("\n" + YELLOW + "Historique des ventes.." + RESET);
