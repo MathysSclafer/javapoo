@@ -63,6 +63,7 @@ public class MainMenu {
                 case "5":
                     ShowProduct showProduct = new ShowProduct();
                     showProduct.show();
+
                 default:
                     System.out.println(RED + "❌ Choix invalide !" + RESET);
             }
