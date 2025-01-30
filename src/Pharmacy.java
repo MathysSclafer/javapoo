@@ -4,7 +4,8 @@ import java.util.List;
 public class Pharmacy{
     private String name;
     private String address;
-    private List<Products> products = new ArrayList<>();
+    Charge charge = new Charge();
+    public List<Products> products = charge.charge();
     private List<Command> commands = new ArrayList<>();
 
 

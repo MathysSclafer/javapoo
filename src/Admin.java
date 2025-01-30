@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Admin extends User {
+    Pharmacy pharmacy = new Pharmacy("Pharmacie","13 rue");
     public Admin(String name, String firstName, String email, String password, String uid, String status) {
         super(name, firstName, email, password, uid, status);
     }
@@ -35,7 +36,7 @@ public class Admin extends User {
                     "                                                                     |_|            " + RESET);
 
             System.out.println("\n" + GREEN + "===== MENU Admin =====" + RESET);
-            System.out.println("1. Faire une vente");
+            System.out.println("1. Panel produit");
             System.out.println("2. Historique des ventes");
             System.out.println("3. Stock critique");
             System.out.println("4. Accès au panel utilisateurs");
@@ -46,13 +47,17 @@ public class Admin extends User {
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1":
-                    System.out.println("\n" + GREEN + "Faire une vente.." + RESET);
+                    System.out.println("\n" + BLUE + "Panel produit.." + RESET);
+                    ShowProduct show = new ShowProduct();
+                    show.show();
                     break;
                 case "2":
-                    System.out.println("\n" + GREEN + "Historique des ventes.." + RESET);
+                    System.out.println("\n" + YELLOW + "Historique des ventes.." + RESET);
+                    CommandHistory.historyCommand(pharmacy);
                     break;
                 case "3":
                     System.out.println("\n" + GREEN + "Stock critique.." + RESET);
+                    ProductSorter.insertionSortAndPrint(pharmacy.getProducts());
                     break;
                 case "4":
                     System.out.println("\n" + YELLOW + "Accès au panel utilisateurs..." + RESET);
@@ -62,11 +67,33 @@ public class Admin extends User {
                 case "5":
                     System.out.println("\n" + YELLOW + "Création d'un compte..." + RESET);
                     Authentication authentication = new Authentication();
-                    authentication.createUser();
+                    String status = "Client";
+                    System.out.println("Voulez vous créer un :");
+                    System.out.println("1 : Client ");
+                    System.out.println("2 : Pharmacien");
+                    System.out.println("3 : Admin");
+                    String choiceperm = scanner.nextLine();
+                    switch (choiceperm) {
+                        case "1":
+                            status = "client";
+                            break;
+                        case "2":
+                            status = "pharmacist";
+                            break;
+                        case "3":
+                            status = "admin";
+                            break;
+                        default:
+                            status = "client";
+                            break;
+                    }
+                    authentication.createUser(status);
                     break;
                 case "6":
                     System.out.println("\n" + RED + "Déconnexion..." + RESET);
                     quit = true;
+                    MainMenu mainMenu = new MainMenu();
+                    mainMenu.mainMenu();
                     break;
                 default:
                     System.out.println("❌ " + RED + "Choix invalide !" + RESET);

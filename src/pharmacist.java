@@ -2,16 +2,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Pharmacien extends User {
+public class pharmacist extends User {
     Pharmacy pharmacy = new Pharmacy("Pharmacie", "13 rue");
-
-    Products doliprane = new Products(0, "doliprane",
-            100, 5, "jdiada", "Medicamet");
-    public Pharmacien(String name, String firstName, String email, String password, String uid, String status) {
+    public pharmacist(String name, String firstName, String email, String password, String uid, String status) {
         super(name, firstName, email, password, uid, status);
     }
 
-    public Pharmacien() {
+    public pharmacist() {
         super();
     }
 
@@ -19,10 +16,8 @@ public class Pharmacien extends User {
     public void showMenu() {
         Scanner scanner = new Scanner(System.in);
         boolean quit = false;
-
-        pharmacy.addProductToPharmacy(doliprane);
-
         Command.loadCommands(pharmacy);
+
 
         while (!quit) {
             final String RESET = "\u001B[0m";
@@ -53,8 +48,9 @@ public class Pharmacien extends User {
 
             String choice = scanner.nextLine();
             switch (choice) {
-                case "1":
-                    System.out.println("\n" + GREEN + "Faire une vente.." + RESET);
+                case "1" :
+                    System.out.println("\n" + BLUE + "Faire une vente.." + RESET);
+                    pharmacy.getProducts();
                     Command command = new Command(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date()));
                     if (!command.startCommand(pharmacy)) {
                         command = null;
@@ -64,7 +60,7 @@ public class Pharmacien extends User {
                     }
                     break;
                 case "2":
-                    System.out.println("\n" + GREEN + "Historique des ventes.." + RESET);
+                    System.out.println("\n" + YELLOW + "Historique des ventes.." + RESET);
                     CommandHistory.historyCommand(pharmacy);
                     break;
                 case "3":

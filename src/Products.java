@@ -1,5 +1,3 @@
-
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Products extends Global{
@@ -87,13 +85,10 @@ public class Products extends Global{
 
 
     public void removeStock(int quantity) {
-
         if(quantity < this.stock){           //si le nombre a enlever est inferieur au nombre disponible //
             this.stock -= quantity;
-
         }
         else {
-
             System.out.println("La quantité a enlever est supérieur au stock disponible ! ");
         }
     }
@@ -121,7 +116,6 @@ public class Products extends Global{
 
     public void removeFromStock(int quantity) {
         stock -= quantity;
-
     }
 
     public void checkStock() {

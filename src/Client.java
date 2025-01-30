@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Client extends User {
@@ -12,6 +14,7 @@ public class Client extends User {
     @Override
     public void showMenu() {
         Scanner scanner = new Scanner(System.in);
+        ShowProduct showProduct = new ShowProduct();
         boolean quit = false;
 
         while (!quit) {
@@ -35,18 +38,40 @@ public class Client extends User {
                     "                                                                     |_|            " + RESET);
 
             System.out.println("\n" + GREEN + "===== MENU CLIENT =====" + RESET);
-            System.out.println("1. Modifier mon profil");
-            System.out.println("2. Voir mes informations");
+            System.out.println("1. Afficher les produits");
+            System.out.println("2. Faire une commande");
             System.out.println("3. Déconnexion");
             System.out.print(CYAN + "Votre choix : " + RESET);
 
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1":
-                    System.out.println("\n" + GREEN + "Modification du profil..." + RESET);
+                    System.out.println("\n" + GREEN + "Ouverture de la liste produit..." + RESET);
+                    System.out.println("Voulez vous :");
+                    System.out.println("1 : Afficher tous les produits ?");
+                    System.out.println("2 : Ou chercher un produit par nom ?");
+                    String input = scanner.nextLine();
+                    switch (input) {
+                        case "1":
+
+                            showProduct.showProducts();
+                            break;
+                        case "2":
+                            showProduct.searchProduct();
+                    }
+
                     break;
                 case "2":
-                    System.out.println("\n" + BLUE + "Nom : " + getName() + " | Email : " + getEmail() + RESET);
+                    System.out.println("commande");
+                    Pharmacy pharmacy = new Pharmacy("Pharmacie","13 rue");
+                    pharmacy.getProducts();
+                    Command command = new Command(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date()));
+                    if (!command.startCommand(pharmacy)) {
+                        command = null;
+                        System.out.println("La commande a bien été supprimée.");
+                    } else {
+                        System.out.println("Commande confirmée!");
+                    }
                     break;
                 case "3":
                     System.out.println("\n" + RED + "Déconnexion..." + RESET);
