@@ -53,7 +53,7 @@ public class Admin extends User {
                     break;
                 case "3":
                     System.out.println("\n" + GREEN + "Stock critique.." + RESET);
-
+                    break;
                 case "4":
                     System.out.println("\n" + YELLOW + "Accès au panel utilisateurs..." + RESET);
                     ManageUser manageUser = new ManageUser();
@@ -63,11 +63,11 @@ public class Admin extends User {
                     System.out.println("\n" + YELLOW + "Création d'un compte..." + RESET);
                     Authentication authentication = new Authentication();
                     authentication.createUser();
+                    break;
                 case "6":
                     System.out.println("\n" + RED + "Déconnexion..." + RESET);
                     quit = true;
                     break;
-
                 default:
                     System.out.println("❌ " + RED + "Choix invalide !" + RESET);
             }

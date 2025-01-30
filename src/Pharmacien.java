@@ -1,6 +1,9 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Pharmacien extends User {
+    Pharmacy pharmacy = new Pharmacy("Pharmacie", "13 rue");
     public Pharmacien(String name, String firstName, String email, String password, String uid, String status) {
         super(name, firstName, email, password, uid, status);
     }
@@ -45,12 +48,22 @@ public class Pharmacien extends User {
             switch (choice) {
                 case "1":
                     System.out.println("\n" + GREEN + "Faire une vente.." + RESET);
+                    Command command = new Command(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date()));
+                    if (!command.startCommand(pharmacy)) {
+                        command = null;
+                        System.out.println("La commande a bien été supprimée.");
+                    } else {
+                        System.out.println("Commande confirmée!");
+                    }
                     break;
                 case "2":
                     System.out.println("\n" + GREEN + "Historique des ventes.." + RESET);
+                    CommandHistory.historyCommand(pharmacy);
                     break;
                 case "3":
                     System.out.println("\n" + GREEN + "Stock critique.." + RESET);
+                    ProductSorter.insertionSortAndPrint(pharmacy.getProducts());
+                    break;
                 case "4":
                     System.out.println("\n" + RED + "Déconnexion..." + RESET);
                     quit = true;
