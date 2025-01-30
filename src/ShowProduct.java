@@ -122,8 +122,6 @@ public class ShowProduct {
     }
 
 
-
-
     // Méthode pour sauvegarder la liste des produits dans le fichier JSON
     public void saveProducts(Pharmacy pharmacy) {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -136,6 +134,8 @@ public class ShowProduct {
             System.err.println("❌ Erreur lors de l'écriture du fichier : " + e.getMessage());
         }
     }
+
+
     public boolean supprimerProduitParId(List<Products> lst_produit, int productId) {
         for (Iterator<Products> iterator = lst_produit.iterator(); iterator.hasNext();) {
             Products produit = iterator.next();
