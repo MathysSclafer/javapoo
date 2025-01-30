@@ -34,6 +34,7 @@ public class MainMenu {
             System.out.println("4. DEBUG");
             System.out.print(CYAN + "Votre choix : " + RESET);
 
+
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1":

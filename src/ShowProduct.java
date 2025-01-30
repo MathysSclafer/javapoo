@@ -157,4 +157,28 @@ public class ShowProduct {
         System.out.println("❌ Produit non trouvé.");
         return false;
     }
+    public void searchProduct() {
+        if (lst_produit.isEmpty()) {
+            System.out.println("📭 Aucun produit dans l'inventaire.");
+            return;
+        }
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("\n🔎 Entrez le nom du produit à rechercher : ");
+        String searchName = scanner.nextLine().toLowerCase();
+
+        List<Products> foundProducts = lst_produit.stream() //flux de données//
+                .filter(p -> p.getName().toLowerCase().contains(searchName))    //on filtre les mots dans la liste par rapport a searchName  //
+                .toList(); //on met le resultat dans lst_product//
+
+        if (foundProducts.isEmpty()) {
+            System.out.println("❌ Aucun produit correspondant trouvé.");
+        } else {
+            System.out.println("\n✅ Produits trouvés :");
+            for (Products elmnt : foundProducts) {
+                System.out.println("- " + elmnt.getName() + " | Prix: " + elmnt.getPrice() + " | Stock: " + elmnt.getStock() + " | Catégorie: " + elmnt.getCategory());
+            }
+        }
+
+    }
 }

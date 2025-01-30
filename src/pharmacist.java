@@ -16,6 +16,8 @@ public class pharmacist extends User {
     public void showMenu() {
         Scanner scanner = new Scanner(System.in);
         boolean quit = false;
+        Command.loadCommands(pharmacy);
+
 
         while (!quit) {
             final String RESET = "\u001B[0m";
