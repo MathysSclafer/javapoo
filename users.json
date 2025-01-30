@@ -1,0 +1,22 @@
+[ {
+  "name" : "ben",
+  "password" : "Ben12345",
+  "email" : "ben@gmail.com",
+  "status" : "client",
+  "firstName" : "ben",
+  "uid" : "732d4169-4926-41f3-b88e-e2709cf76847"
+}, {
+  "name" : "root@gmail.com",
+  "password" : "Root1234",
+  "email" : "root@gmail.com",
+  "status" : "admin",
+  "firstName" : "root@gmail.com",
+  "uid" : "7325b64a-db01-4993-8055-76cf62bd891b"
+}, {
+  "name" : "ggg",
+  "password" : "GGG123456",
+  "email" : "gg@gmail.com",
+  "status" : "pharmacien",
+  "firstName" : "ggg",
+  "uid" : "bdf0be71-2600-4033-bd00-5fbc76b21d34"
+} ]
