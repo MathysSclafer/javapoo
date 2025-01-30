@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Charge {
-    public void charge() {
-
+    public List<Products> charge() {
         JSONParser parser = new JSONParser();
+        List<Products> productsList = new ArrayList<>();
 
         try {
             // Lire le fichier JSON
@@ -20,53 +20,49 @@ public class Charge {
             // Récupérer l'objet pharmacie
             JSONObject pharmacie = (JSONObject) jsonObject.get("pharmacie");
 
-            // Créer une liste pour stocker les produits
-            List<Products> productsList = new ArrayList<>();
+            // Vérification si la structure JSON est valide
+            if (pharmacie == null || !pharmacie.containsKey("produits")) {
+                System.out.println("❌ Erreur : Structure JSON invalide !");
+                return productsList;  // Retourne une liste vide en cas d'erreur
+            }
 
             // Parcourir les catégories de produits
             JSONArray categories = (JSONArray) pharmacie.get("produits");
             for (Object categoryProduct : categories) {
-                JSONObject category = (JSONObject) categoryProduct;
+                JSONObject categorys = (JSONObject) categoryProduct;
 
                 // Récupérer le nom de la catégorie et sous-catégorie
-                String categorie = (String) category.get("categorie");
-                String sousCategorie = (String) category.get("sousCategorie");
+                String category = (String) categorys.get("categorie");
 
                 // Récupérer les produits de la sous-catégorie
-                JSONArray produits = (JSONArray) category.get("produits");
+                JSONArray produits = (JSONArray) categorys.get("produits");
 
                 // Parcourir les produits et les ajouter à la liste
                 for (Object productObject : produits) {
-                    Products elmnt = getProducts((JSONObject) productObject, categorie);
-
+                    Products elmnt = getProducts((JSONObject) productObject, category);
                     productsList.add(elmnt);
                 }
             }
-
-            // Affichage des produits et de leurs catégories
-            for (Products product : productsList) {
-                System.out.println("\nProduit : " + product.getName());
-                System.out.println("Catégorie : " + product.getCategory());
-                System.out.println("Prix : " + product.getPrice());
-                System.out.println("Quantité en stock : " + product.getStock());
-                System.out.println("Description : " + product.getDescription());
-            }
-
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
+            System.out.println("❌ Erreur de lecture du fichier JSON !");
+            e.printStackTrace();
+        } catch (ParseException e) {
+            System.out.println("❌ Erreur de parsing du fichier JSON !");
             e.printStackTrace();
         }
+
+        return productsList;  // Retourne la liste des produits
     }
 
-    private static Products getProducts(JSONObject productObject, String categorie) {
-        JSONObject produit = productObject;
-        Products elmnt = new Products(
-                ((Long) produit.get("id")).intValue(),  // ID
-                (String) produit.get("nom"),           // Nom
-                (Double) produit.get("prix"),          // Prix
-                ((Long) produit.get("quantiteStock")).intValue(),  // Quantité en stock
-                (String) produit.get("description"),   // Description
-                categorie  // Catégorie sous forme de String
+    private static Products getProducts(JSONObject productObject, String category ) {
+        return new Products(
+                ((Long) productObject.get("id")).intValue(),  // ID
+                (String) productObject.get("nom"),           // Nom
+                (Double) productObject.get("prix"),          // Prix
+                ((Long) productObject.get("quantiteStock")).intValue(),  // Quantité en stock
+                (String) productObject.get("description"),   // Description
+                (String) productObject.get("category")
+                // Description
         );
-        return elmnt;
     }
 }

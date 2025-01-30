@@ -83,9 +83,29 @@ public class ManageUser {
     }
 
     private void changeUserRole(Client user) {
+        String newStatus ="client";
         String currentStatus = user.getStatus();
-        String newStatus = currentStatus.equals("client") ? "admin" : "client";
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Quelle role voulez vous donner ?");
+        System.out.println("1 : Client");
+        System.out.println("2 : Admin");
+        System.out.println("3 : Pharmacien");
+        int choice = getUserChoice("Votre choix : ", 3);
+        switch (choice) {
+            case 1:
+                newStatus = "client";
+                break;
+                case 2:
+                    newStatus = "admin";
+                    break;
+                    case 3:
+                        newStatus = "pharmacist";
+                        break;
+                        default:
+                            newStatus = "client";
+                            break;
 
+        }
         System.out.println("Le rôle de " + user.getName() + " va être changé de " + currentStatus + " à " + newStatus);
         System.out.print("Confirmer ? (oui/non) : ");
         String confirmation = scanner.nextLine().trim().toLowerCase();

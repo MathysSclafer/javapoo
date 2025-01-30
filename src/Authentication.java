@@ -16,16 +16,16 @@ public class Authentication {
     public String loggedUid = "";
     boolean login = false;
     Admin admin = new Admin();
-    Pharmacien pharmacien = new Pharmacien();
+    pharmacist pharmacist = new pharmacist();
 
-    public void createUser() {
+    public void createUser(String status) {
         recoveryUser();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Entrer votre nom");
         String name = scanner.nextLine().trim();
         if (name.isEmpty() || name.length() < 3) {
             System.out.println("❌ Le nom ne peut pas être vide !");
-            createUser();
+            createUser("client");
             return;
         }
 
@@ -33,7 +33,7 @@ public class Authentication {
         String prenom = scanner.nextLine().trim();
         if (prenom.isEmpty() || prenom.length() < 3) {
             System.out.println("❌ Le prénom ne peut pas être vide ! Et doit faire minimum 3 caractéres ! ");
-            createUser();
+            createUser("client");
             return;
         }
 
@@ -41,13 +41,13 @@ public class Authentication {
         String email = scanner.nextLine().trim();
         if (!isValidEmail(email)) {
             System.out.println("❌ Email invalide !");
-            createUser();
+            createUser("client");
             return;
         }
 
         if (isEmailAlreadyUsed(email)) {
             System.out.println("❌ Cet email est déjà utilisé !");
-            createUser();
+            createUser("client");
             return;
         }
 
@@ -55,12 +55,10 @@ public class Authentication {
         String password = scanner.nextLine().trim();
         if (!isValidPassword(password)) {
             System.out.println("❌ Mot de passe trop faible !");
-            createUser();
+            createUser("client");
             return;
         }
-
         String uid = UUID.randomUUID().toString();
-        String status = "client";
 
         // Crée un utilisateur Client
         users.add(new Client(name, prenom, email, password, uid, status));
@@ -90,7 +88,6 @@ public class Authentication {
             i++;
             System.out.println(i + " : Nom : " + u.getName() + " | Prénom : " + u.getFirstName() + " | Email : " + u.getEmail() + " | Mot de passe : " + u.getPassword() + " | Statut : " + u.getStatus());
         }
-        System.out.println(i+1+ " : Quitter");
     }
 
     public void loginUser() {
@@ -112,8 +109,8 @@ public class Authentication {
                     admin.showMenu();
                     loggedUid = u.getUid();
 
-                } else if (u.getStatus() != null && u.getStatus().equals("pharmacien")) {
-                    pharmacien.showMenu();
+                } else if (u.getStatus() != null && u.getStatus().equals("pharmacist")) {
+                    pharmacist.showMenu();
                     loggedUid = u.getUid();
                 } else {
                     System.out.println("Statut utilisateur invalide.");
@@ -127,7 +124,7 @@ public class Authentication {
             System.out.println("Souhaitez-vous créer un nouveau compte ? (Oui/Non)");
             String choice = user.nextLine().trim();
             if (choice.equalsIgnoreCase("Oui")) {
-                createUser();
+                createUser("client");
             }
         }
     }
