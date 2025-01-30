@@ -6,7 +6,7 @@ public class Products extends Global{
     private String description;
     private String category;
 
-    public Products(int id, String name, double price, int stock, String description,String category) {
+    public Products(int id, String name, double price, int stock, String description, String category ) {
         this.id = id;
         this.name = name;
         this.price = price;

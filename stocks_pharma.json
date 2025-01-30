@@ -1,0 +1,129 @@
+[ {
+  "id" : 1,
+  "name" : "Amoxicilline",
+  "price" : 5.99,
+  "stock" : 120,
+  "description" : "Antibiotique à large spectre pour les infections bactériennes.",
+  "category" : null,
+  "inStock" : true
+}, {
+  "id" : 2,
+  "name" : "Azithromycine",
+  "price" : 7.49,
+  "stock" : 50,
+  "description" : "Traitement des infections respiratoires et ORL.",
+  "category" : null,
+  "inStock" : true
+}, {
+  "id" : 12,
+  "name" : "Bain de bouche antiseptique",
+  "price" : 6.49,
+  "stock" : 180,
+  "description" : "Solution pour une hygiène buccale complète.",
+  "category" : null,
+  "inStock" : true
+}, {
+  "id" : 10,
+  "name" : "Brosse à dents électrique",
+  "price" : 39.99,
+  "stock" : 15,
+  "description" : "Brosse à dents électrique avec plusieurs modes.",
+  "category" : null,
+  "inStock" : true
+}, {
+  "id" : 3,
+  "name" : "Ciprofloxacine",
+  "price" : 8.29,
+  "stock" : 75,
+  "description" : "Antibiotique utilisé pour les infections urinaires.",
+  "category" : null,
+  "inStock" : true
+}, {
+  "id" : 7,
+  "name" : "Crème hydratante",
+  "price" : 14.99,
+  "stock" : 80,
+  "description" : "Crème pour hydrater les peaux sèches.",
+  "category" : null,
+  "inStock" : true
+}, {
+  "id" : 11,
+  "name" : "Dentifrice blancheur",
+  "price" : 3.99,
+  "stock" : 250,
+  "description" : "Dentifrice pour des dents plus blanches.",
+  "category" : null,
+  "inStock" : true
+}, {
+  "id" : 8,
+  "name" : "Gel nettoyant visage",
+  "price" : 9.49,
+  "stock" : 150,
+  "description" : "Gel doux pour nettoyer le visage en profondeur.",
+  "category" : null,
+  "inStock" : true
+}, {
+  "id" : 5,
+  "name" : "Ibuprofène",
+  "price" : 3.49,
+  "stock" : 200,
+  "description" : "Anti-inflammatoire non stéroïdien.",
+  "category" : null,
+  "inStock" : true
+}, {
+  "id" : 15,
+  "name" : "Oméga-3",
+  "price" : 19.99,
+  "stock" : 60,
+  "description" : "Améliore la santé cardiovasculaire.",
+  "category" : null,
+  "inStock" : true
+}, {
+  "id" : 4,
+  "name" : "Paracétamol",
+  "price" : 1.99,
+  "stock" : 300,
+  "description" : "Traitement de la douleur et de la fièvre.",
+  "category" : null,
+  "inStock" : true
+}, {
+  "id" : 9,
+  "name" : "Sérum anti-âge",
+  "price" : 24.99,
+  "stock" : 40,
+  "description" : "Sérum pour réduire les signes de vieillissement.",
+  "category" : null,
+  "inStock" : true
+}, {
+  "id" : 6,
+  "name" : "Tramadol",
+  "price" : 9.99,
+  "stock" : 25,
+  "description" : "Antalgique pour les douleurs modérées à sévères.",
+  "category" : null,
+  "inStock" : true
+}, {
+  "id" : 13,
+  "name" : "Vitamine C",
+  "price" : 12.99,
+  "stock" : 120,
+  "description" : "Booste le système immunitaire et réduit la fatigue.",
+  "category" : null,
+  "inStock" : true
+}, {
+  "id" : 14,
+  "name" : "Vitamine D",
+  "price" : 8.49,
+  "stock" : 90,
+  "description" : "Améliore la santé des os et du système immunitaire.",
+  "category" : null,
+  "inStock" : true
+}, {
+  "id" : 16,
+  "name" : "ttt",
+  "price" : 22222.0,
+  "stock" : 2222,
+  "description" : "pepogf",
+  "category" : "fnoizfoi",
+  "inStock" : true
+} ]
