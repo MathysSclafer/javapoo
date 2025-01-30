@@ -14,6 +14,7 @@ public class Client extends User {
     @Override
     public void showMenu() {
         Scanner scanner = new Scanner(System.in);
+        ShowProduct showProduct = new ShowProduct();
         boolean quit = false;
 
         while (!quit) {
@@ -46,8 +47,19 @@ public class Client extends User {
             switch (choice) {
                 case "1":
                     System.out.println("\n" + GREEN + "Ouverture de la liste produit..." + RESET);
-                    ShowProduct showProduct = new ShowProduct();
-                    showProduct.showProducts();
+                    System.out.println("Voulez vous :");
+                    System.out.println("1 : Afficher tous les produits ?");
+                    System.out.println("2 : Ou chercher un produit par nom ?");
+                    String input = scanner.nextLine();
+                    switch (input) {
+                        case "1":
+
+                            showProduct.showProducts();
+                            break;
+                        case "2":
+                            showProduct.searchProduct();
+                    }
+
                     break;
                 case "2":
                     System.out.println("commande");

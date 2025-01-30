@@ -46,7 +46,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/jackson-annotations-2.16.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../jackson-annotations-2.16.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -55,7 +55,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/jackson-core-2.16.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../jackson-core-2.16.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -64,7 +64,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/jackson-databind-2.16.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../jackson-databind-2.16.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -73,7 +73,17 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Documents/json-simple-1.1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../json-simple-1.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="opencsv-5.10" level="application" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/opencsv-5.10.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
