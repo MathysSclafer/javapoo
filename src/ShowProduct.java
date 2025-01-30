@@ -121,7 +121,31 @@ public class ShowProduct {
         return value;
     }
 
-    private void saveProducts() {
+
+    public boolean supprimerProduitParId(List<Products> lst_produit, int productId) {
+        for (Iterator<Products> iterator = lst_produit.iterator(); iterator.hasNext();) {
+            Products produit = iterator.next();
+            if (produit.getId() == productId) {
+                System.out.println("Vous êtes sur le point de supprimer le produit : " + produit.getName());
+                System.out.print("Êtes-vous sûr de vouloir le supprimer ? (Oui/Non) : ");
+                Scanner scanner = new Scanner(System.in);
+                String confirmation = scanner.nextLine().trim().toLowerCase();
+                if (confirmation.equals("oui")) {
+                    iterator.remove();
+                    System.out.println("✅ Produit supprimé !");
+                    return true;
+                } else {
+                    System.out.println("❌ Suppression annulée.");
+                    return false;
+                }
+            }
+        }
+        System.out.println("❌ Produit non trouvé.");
+        return false;
+    }
+
+    // Méthode pour sauvegarder la liste des produits dans le fichier JSON
+    public void saveProducts() {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         File file = new File("stocks_pharma.json");

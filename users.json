@@ -10,6 +10,7 @@
   "password" : "Root1234",
   "email" : "root@gmail.com",
   "status" : "client",
+  "status" : "pharmacist",
   "firstName" : "root@gmail.com",
   "uid" : "7325b64a-db01-4993-8055-76cf62bd891b"
 }, {
@@ -40,4 +41,18 @@
   "status" : "admin",
   "firstName" : "test2",
   "uid" : "0758b4a5-145b-4bb9-a5a2-080b58b69c32"
+}, {
+  "name" : "ddd",
+  "password" : "Dddd2905.",
+  "email" : "ddd@gmail.com",
+  "status" : "client",
+  "firstName" : "ddd",
+  "uid" : "e3cf5366-85e4-4037-aca7-04a093d7eb70"
+}, {
+  "name" : "ddd",
+  "password" : "Root1234",
+  "email" : "fff@gmail.com",
+  "status" : "admin",
+  "firstName" : "ddd",
+  "uid" : "ee7b8e00-46bc-45e6-8f00-8080130c7238"
 } ]

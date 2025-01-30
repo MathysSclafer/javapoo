@@ -39,11 +39,8 @@ public class Charge {
                 System.out.println("❌ Erreur : Le fichier JSON doit être un tableau de produits !");
             }
 
-        } catch (IOException e) {
+        } catch (IOException | ParseException e) {
             System.out.println("❌ Erreur de lecture du fichier JSON !");
-            e.printStackTrace();
-        } catch (ParseException e) {
-            System.out.println("❌ Erreur de parsing du fichier JSON !");
             e.printStackTrace();
         }
 

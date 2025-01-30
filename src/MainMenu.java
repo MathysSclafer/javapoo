@@ -31,7 +31,7 @@ public class MainMenu {
             System.out.println("1. Créer un compte");
             System.out.println("2. Se connecter");
             System.out.println("3. Quitter");
-            System.out.println("4. DEBUG (Afficher les produits)");
+            System.out.println("4. DEBUG");
             System.out.print(CYAN + "Votre choix : " + RESET);
 
             String choice = scanner.nextLine();
