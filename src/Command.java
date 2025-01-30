@@ -71,17 +71,17 @@ public class Command extends Global{
             }
         }
     }
-
     public void askForProduct(Pharmacy pharmacy) {
         Products product = null;
         int quantity;
+        boolean continueQuestion = false;
 
         while (product == null) {
-            System.out.println(YELLOW + "Entrez le nom d'un produit: " + RESET);
+            System.out.println(YELLOW + "Entrez le nom d'un produit ('continuer' pour passer): " + RESET);
             String productText = scanner.nextLine().trim();
 
             if(productText.equalsIgnoreCase("continuer")){
-                System.out.println("LALALALAL");
+                continueQuestion = true;
                 break;
             }
 
@@ -101,7 +101,7 @@ public class Command extends Global{
 
         int alreadyOrdered = products.getOrDefault(product, 0);
 
-        while (true) {
+        while (!continueQuestion) {
             System.out.println(YELLOW + "Entrez la quantité de " + product.getName() + " que vous voulez :" +
                     "\n (Il en reste " + (product.getStock() - alreadyOrdered) + " en stock)" + RESET);
             if (scanner.hasNextInt()) {
@@ -127,10 +127,7 @@ public class Command extends Global{
                 scanner.next();
             }
         }
-
-        System.out.println(YELLOW + "Voulez-vous ajouter un autre médicament ('oui' ou 'non') ? " + RESET);
-        String response = scanner.nextLine().trim();
-        if (response.equalsIgnoreCase("oui")) {
+        if(!continueQuestion){
             askForProduct(pharmacy);
         }
     }
@@ -177,7 +174,6 @@ public class Command extends Global{
                 pharmacy.addCommandToPharmacy(this);
                 System.out.println(GREEN + "Prix total: " + totalPrice + "€" + RESET);
                 System.out.println("-------------------------------------------");
-                System.out.println(pharmacy.getCommands());
                 saveCommand(pharmacy);
                 Statistic.createCsvStatistic(pharmacy);
                 ShowProduct showProduct = new ShowProduct();
@@ -216,7 +212,6 @@ public class Command extends Global{
             commandMap.put("type", command.getType());
             commandMap.put("products", serializedProducts);
 
-            // Ajoutez cette commande sérialisée à la liste
             serializedCommands.add(commandMap);
         }
 
@@ -240,10 +235,8 @@ public class Command extends Global{
 
         if (file.exists()) {
             try {
-                // Lire directement le tableau de commandes
                 List<Map<String, Object>> loadedData = objectMapper.readValue(file, new TypeReference<List<Map<String, Object>>>() {});
 
-                System.out.println(loadedData);
 
                 // Liste des commandes à ajouter à la pharmacie
                 List<Command> commands = new ArrayList<>();

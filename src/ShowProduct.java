@@ -17,7 +17,7 @@ public class ShowProduct {
         productList.sort(Comparator.comparing(Products::getName));
     }
 
-    public void show() {
+    public void show(Pharmacy pharmacy) {
         while (true) {
             System.out.println("\n--- Menu Principal ---");
             System.out.println("1. Liste des Produits");
@@ -32,8 +32,8 @@ public class ShowProduct {
 
                 switch (choice) {
                     case 1 -> showProducts();
-                    case 2 -> addProduct();
-                    case 3 -> deleteProductByName();
+                    case 2 -> addProduct(pharmacy);
+                    case 3 -> deleteProductByName(pharmacy);
                     case 4 -> {
                         System.out.println("\uD83D\uDC4B Au revoir !");
                         return;
@@ -59,7 +59,7 @@ public class ShowProduct {
         }
     }
 
-    public void addProduct() {
+    public void addProduct(Pharmacy pharmacy) {
         System.out.println("\n--- Ajout d'un Produit ---");
 
         System.out.print("Nom du produit : ");
@@ -82,7 +82,7 @@ public class ShowProduct {
         productList.sort(Comparator.comparing(Products::getName));
 
         // Sauvegarde
-        saveProducts();
+        saveProducts(pharmacy);
 
         System.out.println("✅ Produit ajouté avec succès !");
     }
@@ -119,8 +119,11 @@ public class ShowProduct {
         return value;
     }
 
+
+
+
     // Méthode pour sauvegarder la liste des produits dans le fichier JSON
-    public void saveProducts() {
+    public void saveProducts(Pharmacy pharmacy) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         File file = new File("stocks_pharma.json");
@@ -132,7 +135,7 @@ public class ShowProduct {
         }
     }
 
-    public boolean deleteProductByName() {
+    public boolean deleteProductByName(Pharmacy pharmacy) {
         System.out.print("\nQuel produit voulez-vous supprimer ? ");
         String productName = scanner.nextLine();
 
@@ -147,7 +150,7 @@ public class ShowProduct {
                 if (confirmation.equals("oui")) {
                     iterator.remove();
                     System.out.println("✅ Produit supprimé !");
-                    saveProducts();
+                    saveProducts(pharmacy);
                     return true;
                 } else {
                     System.out.println("❌ Suppression annulée.");
