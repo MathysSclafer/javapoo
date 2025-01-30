@@ -80,6 +80,11 @@ public class Command extends Global{
             System.out.println(YELLOW + "Entrez le nom d'un produit: " + RESET);
             String productText = scanner.nextLine().trim();
 
+            if(productText.equalsIgnoreCase("continuer")){
+                System.out.println("LALALALAL");
+                break;
+            }
+
             product = pharmacy.getProducts().stream()
                     .filter(p -> p.getName().equalsIgnoreCase(productText))
                     .findFirst()
@@ -98,7 +103,7 @@ public class Command extends Global{
 
         while (true) {
             System.out.println(YELLOW + "Entrez la quantité de " + product.getName() + " que vous voulez :" +
-                    "\n (Il en reste " + product.getStock() + " en stock)" + RESET);
+                    "\n (Il en reste " + (product.getStock() - alreadyOrdered) + " en stock)" + RESET);
             if (scanner.hasNextInt()) {
                 quantity = scanner.nextInt();
                 scanner.nextLine();
@@ -176,6 +181,7 @@ public class Command extends Global{
                 saveCommand(pharmacy);
                 Statistic.createCsvStatistic(pharmacy);
                 ShowProduct showProduct = new ShowProduct();
+                showProduct.saveProducts(pharmacy);
                 return true;
             } else {
                 System.out.println("Veuillez entrer une réponse valide !");
@@ -237,8 +243,11 @@ public class Command extends Global{
                 // Lire directement le tableau de commandes
                 List<Map<String, Object>> loadedData = objectMapper.readValue(file, new TypeReference<List<Map<String, Object>>>() {});
 
+                System.out.println(loadedData);
+
                 // Liste des commandes à ajouter à la pharmacie
                 List<Command> commands = new ArrayList<>();
+
 
                 // Pour chaque objet dans le tableau, créer une Commande et ajouter les produits
                 for (Map<String, Object> commandMap : loadedData) {

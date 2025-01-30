@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Admin extends User {
-    Pharmacy pharmacy = new Pharmacy("Pharmacie","13 rue");
+    Pharmacy pharmacy = new Pharmacy("Pharmacie", "13 rue de la rue");
     public Admin(String name, String firstName, String email, String password, String uid, String status) {
         super(name, firstName, email, password, uid, status);
     }
@@ -14,6 +14,7 @@ public class Admin extends User {
     public void showMenu() {
         Scanner scanner = new Scanner(System.in);
         boolean quit = false;
+        Command.loadCommands(pharmacy);
 
         while (!quit) {
             final String RESET = "\u001B[0m";
@@ -49,7 +50,7 @@ public class Admin extends User {
                 case "1":
                     System.out.println("\n" + BLUE + "Panel produit.." + RESET);
                     ShowProduct show = new ShowProduct();
-                    show.show();
+                    show.show(pharmacy);
                     break;
                 case "2":
                     System.out.println("\n" + YELLOW + "Historique des ventes.." + RESET);

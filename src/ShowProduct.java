@@ -17,7 +17,7 @@ public class ShowProduct {
         lst_produit.sort(Comparator.comparing(Products::getName));
     }
 
-    public void show() {
+    public void show(Pharmacy pharmacy) {
         while (true) {
             System.out.println("\n--- Menu Principal ---");
             System.out.println("1. Liste des Produits");
@@ -34,7 +34,7 @@ public class ShowProduct {
                         showProducts();
                         break;
                     case 2:
-                        newProduct();
+                        newProduct(pharmacy);
                         break;
                     case 3:
                         System.out.println("👋 Au revoir !");
@@ -62,7 +62,7 @@ public class ShowProduct {
         }
     }
 
-    public void newProduct() {
+    public void newProduct(Pharmacy pharmacy) {
         System.out.println("\n--- Ajout d'un Produit ---");
 
         System.out.print("Nom du produit : ");
@@ -84,7 +84,7 @@ public class ShowProduct {
         lst_produit.sort(Comparator.comparing(Products::getName));
 
         // Sauvegarde après ajout
-        saveProducts();
+        saveProducts(pharmacy);
 
         System.out.println("✅ Produit ajouté avec succès !");
     }
@@ -125,12 +125,12 @@ public class ShowProduct {
 
 
     // Méthode pour sauvegarder la liste des produits dans le fichier JSON
-    public void saveProducts() {
+    public void saveProducts(Pharmacy pharmacy) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         File file = new File("stocks_pharma.json");
         try {
-            objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, lst_produit);
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, pharmacy.getProducts());
             System.out.println("✅ Produits sauvegardés !");
         } catch (IOException e) {
             System.err.println("❌ Erreur lors de l'écriture du fichier : " + e.getMessage());

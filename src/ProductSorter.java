@@ -23,10 +23,11 @@ public class ProductSorter extends  Global{
         }
 
         System.out.println("=====PRODUITS PROCHE DE LA RUPTURE DE STOCK=====\n");
-        System.out.println(CYAN + "Produit            Stock        Prix(€)" + RESET);
+        System.out.println(CYAN + "Produit            Stock        Prix/u(€)" + RESET);
 
         for (Products product : lowStock) {
-            System.out.printf("%-20s %-10d %.2f€%n", product.getName(), product.getStock(), product.getPrice());
+            String color = product.getStock() == 0 ? RED : RESET;
+            System.out.printf("%s%-20s %-10d %.2f€%n%s", color, product.getName(), product.getStock(), product.getPrice(), RESET);
         }
 
 

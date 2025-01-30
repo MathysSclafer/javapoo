@@ -2,10 +2,10 @@
   "id" : 1,
   "name" : "Amoxicilline",
   "price" : 5.99,
-  "stock" : 120,
+  "stock" : 0,
   "description" : "Antibiotique à large spectre pour les infections bactériennes.",
   "category" : "Non catégorisé",
-  "inStock" : true
+  "inStock" : false
 }, {
   "id" : 2,
   "name" : "Azithromycine",
