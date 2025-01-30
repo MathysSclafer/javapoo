@@ -26,4 +26,14 @@
     "name" : "Azithromycine",
     "id" : 2
   } ]
+}, {
+  "date" : "30-01-2025 21:26:48",
+  "pharmacistName" : "Roger",
+  "type" : "standard",
+  "customerName" : "Clement",
+  "products" : [ {
+    "quantity" : 2,
+    "name" : "Azithromycine",
+    "id" : 2
+  } ]
 } ]
