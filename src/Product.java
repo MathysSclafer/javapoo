@@ -1,4 +1,7 @@
-public class Product extends Global implements Stockable{
+import java.util.ArrayList;
+import java.util.List;
+
+public class Product extends Global{
     private int id;
     private String name;
     private double price;
@@ -30,7 +33,6 @@ public class Product extends Global implements Stockable{
         return price*nbOfProductBought;
     }
 
-    @Override
     public boolean isInStock(int number) {
         if(stock >=  number){
             return true;
@@ -40,13 +42,11 @@ public class Product extends Global implements Stockable{
         }
     }
 
-    @Override
     public void removeFromStock(int quantity) {
         stock -= quantity;
 
     }
 
-    @Override
     public void checkStock() {
         if(stock < 5){
             System.out.println(RED + "Attention! Il reste " + stock + " de " + name + RESET);

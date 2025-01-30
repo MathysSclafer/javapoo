@@ -7,13 +7,15 @@ public class Main {
 
         Pharmacy pharmacy = new Pharmacy("Phamarcie", "13 rue");
         Product doliprane = new Product(0,
-                "Doliprane", 100, 6, "CACACA");
+                "Doliprane", 100, 4, "CACACA");
         Product caca = new Product(1,
                 "caca", 100, 2, "CACACA");
 
+        Product[] products = {doliprane, caca};
 
-        pharmacy.addProductToPharmacy(doliprane);
-        pharmacy.addProductToPharmacy(caca);
+        for(Product product : products){
+            pharmacy.addProductToPharmacy(product);
+        }
 
         menu(pharmacy);
     }
@@ -24,6 +26,7 @@ public class Main {
         System.out.println("Choisissez une option");
         System.out.println("1. Passer une commande");
         System.out.println("2. Historique de commande");
+        System.out.println("3. Stocks");
 
         while(true){
             if(scanner.hasNextInt())
@@ -38,8 +41,11 @@ public class Main {
                     }
                     menu(pharmacy);
                 }
-                if(scanner.nextInt() == 2){
+                else if(scanner.nextInt() == 2){
                     CommandHistory.historyCommand(pharmacy);
+                }
+                else if(scanner.nextInt() == 3){
+                    ProductSorter.insertionSortAndPrint(pharmacy.getProducts());
                 }
             }
             else{
