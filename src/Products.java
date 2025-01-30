@@ -1,3 +1,7 @@
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Products extends Global{
     private int id;
     private String name;
@@ -6,7 +10,13 @@ public class Products extends Global{
     private String description;
     private String category;
 
-    public Products(int id, String name, double price, int stock, String description,String category) {
+    public Products(@JsonProperty("id") int id,
+                    @JsonProperty("name") String name,
+                    @JsonProperty("price") double price,
+                    @JsonProperty("stock") int stock,
+                    @JsonProperty("description") String description,
+                    @JsonProperty("category") String category
+    ) {
         this.id = id;
         this.name = name;
         this.price = price;

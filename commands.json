@@ -1,0 +1,21 @@
+[ {
+  "date" : "30-01-2025 13:12:26",
+  "pharmacistName" : "Roger",
+  "type" : "urgent",
+  "customerName" : "dpada",
+  "products" : [ {
+    "quantity" : 2,
+    "name" : "doliprane",
+    "id" : 0
+  } ]
+}, {
+  "date" : "30-01-2025 13:14:43",
+  "pharmacistName" : "Roger",
+  "type" : "standard",
+  "customerName" : "Salut",
+  "products" : [ {
+    "quantity" : 2,
+    "name" : "doliprane",
+    "id" : 0
+  } ]
+} ]

@@ -25,6 +25,11 @@ public class Pharmacy{
         commands.add(command);
     }
 
+
+    public void setCommands(List<Command> commands) {
+        this.commands = commands;
+    }
+
     public List<Command> getCommands() {
         return commands;
     }

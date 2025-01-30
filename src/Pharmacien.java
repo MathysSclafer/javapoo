@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class Pharmacien extends User {
     Pharmacy pharmacy = new Pharmacy("Pharmacie", "13 rue");
+
+    Products doliprane = new Products(0, "doliprane",
+            100, 5, "jdiada", "Medicamet");
     public Pharmacien(String name, String firstName, String email, String password, String uid, String status) {
         super(name, firstName, email, password, uid, status);
     }
@@ -16,6 +19,10 @@ public class Pharmacien extends User {
     public void showMenu() {
         Scanner scanner = new Scanner(System.in);
         boolean quit = false;
+
+        pharmacy.addProductToPharmacy(doliprane);
+
+        Command.loadCommands(pharmacy);
 
         while (!quit) {
             final String RESET = "\u001B[0m";
