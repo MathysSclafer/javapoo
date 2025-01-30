@@ -14,7 +14,8 @@ public class ShowProduct {
         this.productList = charge.charge();
         this.scanner = new Scanner(System.in);
         // Tri des produits par ordre alphabétique au démarrage
-        productList.sort(Comparator.comparing(Products::getName));
+        quickSort(productList, 0, productList.size() - 1);
+
     }
 
     public void show(Pharmacy pharmacy) {
@@ -48,13 +49,13 @@ public class ShowProduct {
     }
 
     public void showProducts() {
-        productList.sort(Comparator.comparing(Products::getName));
+        quickSort(productList, 0, productList.size() - 1);
         System.out.println("\n--- Liste des Produits ---");
         if (productList.isEmpty()) {
             System.out.println("Aucun produit n'est disponible !");
         } else {
             for (Products p : productList) {
-                System.out.println("- " + p.getName() + " | Stock: " + p.getStock());
+                System.out.println("- " + p.getName() + " | Stock: " + p.getStock() + "| Prix: "+ p.getPrice() + "| Categorie: "+ p.getCategory());
             }
         }
     }
@@ -79,7 +80,7 @@ public class ShowProduct {
         productList.add(newProduct);
 
         // Tri après ajout
-        productList.sort(Comparator.comparing(Products::getName));
+        quickSort(productList, 0, productList.size() - 1);
 
         // Sauvegarde
         saveProducts(pharmacy);
@@ -183,5 +184,25 @@ public class ShowProduct {
                 System.out.println("- " + p.getName() + " | Prix: " + p.getPrice() + " | Stock: " + p.getStock() + " | Catégorie: " + p.getCategory());
             }
         }
+    }
+    private void quickSort(List<Products> products, int low, int high) {
+        if (low < high) {
+            int partitionIndex = partition(products, low, high);
+            quickSort(products, low, partitionIndex - 1);
+            quickSort(products, partitionIndex + 1, high);
+        }
+    }
+
+    private int partition(List<Products> products, int low, int high) {
+        String pivot = products.get(high).getName();
+        int i = low - 1;
+        for (int j = low; j < high; j++) {
+            if (products.get(j).getName().compareToIgnoreCase(pivot) <= 0) {
+                i++;
+                Collections.swap(products, i, j);
+            }
+        }
+        Collections.swap(products, i + 1, high);
+        return i + 1;
     }
 }
