@@ -1,7 +1,9 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Admin extends User {
-    Pharmacy pharmacy = new Pharmacy("Pharmacie", "13 rue");
+    Pharmacy pharmacy = new Pharmacy("Pharmacie", "13 rue de la rue");
     public Admin(String name, String firstName, String email, String password, String uid, String status) {
         super(name, firstName, email, password, uid, status);
     }
@@ -14,6 +16,7 @@ public class Admin extends User {
     public void showMenu() {
         Scanner scanner = new Scanner(System.in);
         boolean quit = false;
+        Command.loadCommands(pharmacy);
 
         while (!quit) {
             final String RESET = "\u001B[0m";
@@ -36,35 +39,48 @@ public class Admin extends User {
                     "                                                                     |_|            " + RESET);
 
             System.out.println("\n" + GREEN + "===== MENU Admin =====" + RESET);
-            System.out.println("1. Panel produit");
-            System.out.println("2. Historique des ventes");
-            System.out.println("3. Stock critique");
-            System.out.println("4. Accès au panel utilisateurs");
-            System.out.println("5. Création d'un compte");
-            System.out.println("6. Déconnexion");
+            System.out.println("1 : Faire une vente");
+            System.out.println("2 : Panel produit");
+            System.out.println("3 : Historique des ventes");
+            System.out.println("4 : Stock critique");
+            System.out.println("5 : Accès au panel utilisateurs");
+            System.out.println("6 : Création d'un compte");
+            System.out.println("7 : Déconnexion");
             System.out.print(CYAN + "Votre choix : " + RESET);
 
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1":
+                    System.out.println("\n" + BLUE + "Faire une vente.." + RESET);
+                    pharmacy.getProducts();
+                    Command command = new Command(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date()));
+                    if (!command.startCommand(pharmacy)) {
+                        command = null;
+                        System.out.println("La commande a bien été supprimée.");
+                    } else {
+                        System.out.println("Commande confirmée!");
+                    }
+                    break;
+
+                case "2":
                     System.out.println("\n" + BLUE + "Panel produit.." + RESET);
                     ShowProduct show = new ShowProduct();
                     show.show();
                     break;
-                case "2":
+                case "3":
                     System.out.println("\n" + YELLOW + "Historique des ventes.." + RESET);
                     CommandHistory.historyCommand(pharmacy);
                     break;
-                case "3":
+                case "4":
                     System.out.println("\n" + GREEN + "Stock critique.." + RESET);
                     ProductSorter.insertionSortAndPrint(pharmacy.getProducts());
                     break;
-                case "4":
+                case "5":
                     System.out.println("\n" + YELLOW + "Accès au panel utilisateurs..." + RESET);
                     ManageUser manageUser = new ManageUser();
                     manageUser.manageUser();
                     break;
-                case "5":
+                case "6":
                     System.out.println("\n" + YELLOW + "Création d'un compte..." + RESET);
                     Authentication authentication = new Authentication();
                     String status = "Client";
@@ -89,7 +105,7 @@ public class Admin extends User {
                     }
                     authentication.createUser(status);
                     break;
-                case "6":
+                case "7":
                     System.out.println("\n" + RED + "Déconnexion..." + RESET);
                     quit = true;
                     MainMenu mainMenu = new MainMenu();

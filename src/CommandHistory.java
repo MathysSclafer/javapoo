@@ -10,24 +10,30 @@ public class CommandHistory extends Global {
         // Trier les commandes avant l'affichage
         dateSorter(pharmacy);
 
-        System.out.println(CYAN + "========== Historique des commandes ==========" + RESET);
-        for (Command command : pharmacy.getCommands()) {
-            System.out.println(command.getDate() + "   Pharmacien: " + command.getPharmacistName());
 
-            if (Objects.equals(command.getType(), "urgent")) {
-                System.out.println(RED + "Commande " + command.getType() + "e" + RESET
-                        + "         Client: " + command.getCustomerName());
-            } else {
-                System.out.println("Commande " + command.getType()
-                        + "         Client: " + command.getCustomerName());
+        System.out.println(CYAN + "\n========== HISTORIQUE DES COMMANDES ==========" + RESET);
+        if(pharmacy.getCommands().isEmpty()){
+            System.out.println(RED + "Aucune commande n'a pu être trouvée" + RESET);
+        }
+        else{
+            for (Command command : pharmacy.getCommands()) {
+                System.out.println("\n--------------------------------------------------");
+                System.out.println("📅 Date: " + command.getDate());
+                System.out.println("👨‍⚕️ Pharmacien: " + command.getPharmacistName());
+                System.out.println("👤 Client: " + command.getCustomerName());
+
+                if (Objects.equals(command.getType(), "urgent")) {
+                    System.out.println(RED + "⚠️ Commande URGENTE" + RESET);
+                } else {
+                    System.out.println("📦 Type de commande: " + command.getType());
+                }
+
+                System.out.println("🛒 Produits commandés:");
+                for (Map.Entry<Products, Integer> entry : command.getProducts().entrySet()) {
+                    System.out.println("   - " + entry.getValue() + " x " + entry.getKey().getName());
+                }
+                System.out.println("--------------------------------------------------\n");
             }
-
-            System.out.println("Produits: ");
-            for (Map.Entry<Products, Integer> entry : command.getProducts().entrySet()) {
-                System.out.println(entry.getValue() + " " + entry.getKey().getName());
-            }
-
-            System.out.println("--------------------------------------------");
         }
     }
 

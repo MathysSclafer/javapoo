@@ -16,7 +16,7 @@ public class Authentication {
     public String loggedUid = "";
     boolean login = false;
     Admin admin = new Admin();
-    pharmacist pharmacist = new pharmacist();
+    Phamarcist Phamarcist = new Phamarcist();
 
     public void createUser(String status) {
         recoveryUser();
@@ -110,7 +110,7 @@ public class Authentication {
                     loggedUid = u.getUid();
 
                 } else if (u.getStatus() != null && u.getStatus().equals("pharmacist")) {
-                    pharmacist.showMenu();
+                    Phamarcist.showMenu();
                     loggedUid = u.getUid();
                 } else {
                     System.out.println("Statut utilisateur invalide.");
