@@ -1,4 +1,4 @@
-public class Products {
+public class Products implements Stockable{
     private int id;
     private String name;
     private double price;
@@ -61,5 +61,41 @@ public class Products {
 
     public void setCategorie(String categorie) {
         this.categorie = categorie;
+    }
+
+    public boolean validProduct(double price, int stock) {
+        return this.price > 0 && this.stock > 0;        //on verifie si le produit qu'on ajoute est valide//
+    }
+
+
+
+    public void addStock(int quantity) {
+
+        if(quantity > 0){           //si le nombre est positif//
+            this.stock += quantity;
+        }
+    }
+
+
+    public void removeStock(int quantity) {
+
+        if(quantity < this.stock){           //si le nombre a enlever est inferieur au nombre disponible //
+            this.stock -= quantity;
+
+        }
+        else {
+
+            System.out.println("La quantité a enlever est supérieur au stock disponible ! ");
+        }
+    }
+
+
+    public boolean isInStock() {
+        return this.stock > 0;      // si le stock est superieur a 1 //
+    }
+
+    public void addProduct(){
+
+
     }
 }
