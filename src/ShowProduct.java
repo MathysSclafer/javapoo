@@ -22,7 +22,8 @@ public class ShowProduct {
             System.out.println("\n--- Menu Principal ---");
             System.out.println("1. Liste des Produits");
             System.out.println("2. Ajouter un Produit");
-            System.out.println("3. Quitter");
+            System.out.println("3. Supprimer un Produit");
+            System.out.println("4. Quitter");
             System.out.print("Votre choix : ");
 
             if (scanner.hasNextInt()) {
@@ -37,9 +38,13 @@ public class ShowProduct {
                         newProduct();
                         break;
                     case 3:
+                        supprimerProduitParId("Vitamine D");
+                        break;
+                    case 4:
                         System.out.println("👋 Au revoir !");
                         scanner.close();
-                        return; // Quitte proprement la boucle
+                        return;
+
                     default:
                         System.out.println("❌ Option invalide, veuillez réessayer.");
                 }
@@ -121,9 +126,6 @@ public class ShowProduct {
         return value;
     }
 
-
-
-
     // Méthode pour sauvegarder la liste des produits dans le fichier JSON
     public void saveProducts() {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -136,10 +138,11 @@ public class ShowProduct {
             System.err.println("❌ Erreur lors de l'écriture du fichier : " + e.getMessage());
         }
     }
-    public boolean supprimerProduitParId(List<Products> lst_produit, int productId) {
+    public boolean supprimerProduitParId(String productName) {
         for (Iterator<Products> iterator = lst_produit.iterator(); iterator.hasNext();) {
             Products produit = iterator.next();
-            if (produit.getId() == productId) {
+            // Comparaison des noms de produits avec .equals()
+            if (produit.getName().equals(productName)) {
                 System.out.println("Vous êtes sur le point de supprimer le produit : " + produit.getName());
                 System.out.print("Êtes-vous sûr de vouloir le supprimer ? (Oui/Non) : ");
                 Scanner scanner = new Scanner(System.in);
@@ -147,6 +150,7 @@ public class ShowProduct {
                 if (confirmation.equals("oui")) {
                     iterator.remove();
                     System.out.println("✅ Produit supprimé !");
+                    saveProducts();
                     return true;
                 } else {
                     System.out.println("❌ Suppression annulée.");
@@ -157,6 +161,7 @@ public class ShowProduct {
         System.out.println("❌ Produit non trouvé.");
         return false;
     }
+
     public void searchProduct() {
         if (lst_produit.isEmpty()) {
             System.out.println("📭 Aucun produit dans l'inventaire.");

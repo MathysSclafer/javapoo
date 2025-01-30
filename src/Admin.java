@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Admin extends User {
-    Pharmacy pharmacy = new Pharmacy("Pharmacie","13 rue");
+    Pharmacy pharmacy = new Pharmacy("Pharmacie", "13 rue");
     public Admin(String name, String firstName, String email, String password, String uid, String status) {
         super(name, firstName, email, password, uid, status);
     }
@@ -104,7 +104,6 @@ public class Admin extends User {
     public void addUser() {
         System.out.println("add user");
     }
-
     public void deleteUser() {
         System.out.println("delete user");
     }

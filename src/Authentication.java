@@ -131,7 +131,9 @@ public class Authentication {
 
     private void recoveryUser() {
         ObjectMapper objectMapper = new ObjectMapper();
+        // Permet d'avoir un beau json
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        // Permet de ne pas avoir d'erreur en cas de chose en plus dans le json
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         File file = new File(FILE_PATH);
         if (file.exists()) {
@@ -149,6 +151,7 @@ public class Authentication {
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File(FILE_PATH);
         try {
+            // Permet d'avoir un json beau aussi et d'ecrire dedans
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, users);
             System.out.println("✅ Utilisateurs sauvegardés !");
         } catch (IOException e) {
