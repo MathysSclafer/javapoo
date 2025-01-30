@@ -42,7 +42,6 @@ public class Client extends User {
             System.out.println("2. Faire une commande");
             System.out.println("3. Déconnexion");
             System.out.print(CYAN + "Votre choix : " + RESET);
-
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1":

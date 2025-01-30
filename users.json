@@ -47,4 +47,11 @@
   "status" : "client",
   "firstName" : "ddd",
   "uid" : "e3cf5366-85e4-4037-aca7-04a093d7eb70"
+}, {
+  "name" : "bennn",
+  "password" : "Root12345",
+  "email" : "bennn@gmail.com",
+  "status" : "client",
+  "firstName" : "benn",
+  "uid" : "477b6495-163c-4eec-918b-aea5b056aa81"
 } ]
