@@ -29,7 +29,7 @@ public class ShowProduct {
 
             if (scanner.hasNextInt()) {
                 int choice = scanner.nextInt();
-                scanner.nextLine(); // Consommer le retour à la ligne
+                scanner.nextLine();
 
                 switch (choice) {
                     case 1 -> showProducts();
@@ -43,12 +43,13 @@ public class ShowProduct {
                 }
             } else {
                 System.out.println("❌ Veuillez entrer un numéro valide !");
-                scanner.next(); // Nettoyer l'entrée invalide
+                scanner.next();
             }
         }
     }
 
     public void showProducts() {
+
         quickSort(productList, 0, productList.size() - 1);
         System.out.println("\n--- Liste des Produits ---");
         if (productList.isEmpty()) {
@@ -94,11 +95,11 @@ public class ShowProduct {
             System.out.print(message);
             if (scanner.hasNextDouble()) {
                 value = scanner.nextDouble();
-                scanner.nextLine(); // Nettoyer le buffer
+                scanner.nextLine();
                 break;
             } else {
                 System.out.println("❌ Veuillez entrer un nombre valide.");
-                scanner.next(); // Nettoyer l'entrée incorrecte
+                scanner.next();
             }
         }
         return value;
@@ -110,11 +111,11 @@ public class ShowProduct {
             System.out.print(message);
             if (scanner.hasNextInt()) {
                 value = scanner.nextInt();
-                scanner.nextLine(); // Nettoyer le buffer
+                scanner.nextLine();
                 break;
             } else {
                 System.out.println("❌ Veuillez entrer un nombre valide.");
-                scanner.next(); // Nettoyer l'entrée incorrecte
+                scanner.next();
             }
         }
         return value;
