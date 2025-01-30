@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-public class ShowProduct {
+public class ShowProduct extends Global{
 
     private List<Products> productList;
     private final Scanner scanner;
@@ -51,14 +51,39 @@ public class ShowProduct {
     public void showProducts() {
 
         quickSort(productList, 0, productList.size() - 1);
-        System.out.println("\n--- Liste des Produits ---");
+        System.out.println("=========LISTE DES PRODUITS=========\n");
         if (productList.isEmpty()) {
             System.out.println("Aucun produit n'est disponible !");
         } else {
+            System.out.println(CYAN + "Produit             Stock      Prix/u(€)   Catégorie" + RESET);
+            System.out.println("------------------------------------------------------------");
+
+            int maxNameLength = 20;
+
             for (Products p : productList) {
-                System.out.println("- " + p.getName() + " | Stock: " + p.getStock() + "| Prix: "+ p.getPrice() + "| Categorie: "+ p.getCategory());
+                String name = p.getName();
+                List<String> nameLines = new ArrayList<>();
+
+                // Découpage du nom si trop long
+                while (name.length() > maxNameLength) {
+                    nameLines.add(name.substring(0, maxNameLength));
+                    name = name.substring(maxNameLength);
+                }
+                nameLines.add(name);
+
+                int numLines = nameLines.size();
+
+                System.out.printf("%-20s %-10d %.2f€   %s%n",
+                        nameLines.get(0), p.getStock(), p.getPrice(), p.getCategory());
+
+                for (int i = 1; i < numLines; i++) {
+                    System.out.printf("%-20s%n", nameLines.get(i));
+                }
             }
         }
+
+
+
     }
 
     public void addProduct(Pharmacy pharmacy) {
