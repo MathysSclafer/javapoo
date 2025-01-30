@@ -122,6 +122,20 @@ public class ShowProduct {
     }
 
 
+
+
+    // Méthode pour sauvegarder la liste des produits dans le fichier JSON
+    public void saveProducts() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        File file = new File("stocks_pharma.json");
+        try {
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, lst_produit);
+            System.out.println("✅ Produits sauvegardés !");
+        } catch (IOException e) {
+            System.err.println("❌ Erreur lors de l'écriture du fichier : " + e.getMessage());
+        }
+    }
     public boolean supprimerProduitParId(List<Products> lst_produit, int productId) {
         for (Iterator<Products> iterator = lst_produit.iterator(); iterator.hasNext();) {
             Products produit = iterator.next();
@@ -142,18 +156,5 @@ public class ShowProduct {
         }
         System.out.println("❌ Produit non trouvé.");
         return false;
-    }
-
-    // Méthode pour sauvegarder la liste des produits dans le fichier JSON
-    public void saveProducts() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-        File file = new File("stocks_pharma.json");
-        try {
-            objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, lst_produit);
-            System.out.println("✅ Produits sauvegardés !");
-        } catch (IOException e) {
-            System.err.println("❌ Erreur lors de l'écriture du fichier : " + e.getMessage());
-        }
     }
 }
