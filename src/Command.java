@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-public class Command extends Global{
+public class Command extends Global implements Serializable{
     private String date;
     private Map<Products, Integer> products = new HashMap<>(); // Stocker Product au lieu de String
     private String type;
@@ -39,10 +39,10 @@ public class Command extends Global{
         this.customerName = customerName;
     }
 
-    public boolean startCommand(Pharmacy pharmacy) {
+    public boolean startCommand(Pharmacy pharmacy, Phamarcist pharmacist) {
         while (true) {
             System.out.println(YELLOW + "Veuillez choisir votre type de commande ('urgent' ou 'standard') : " + RESET);
-            this.pharmacistName = "Roger";
+            this.pharmacistName = pharmacist.getName();
             String inputType = scanner.nextLine().trim();
             if (inputType.equalsIgnoreCase("urgent") || inputType.equalsIgnoreCase("standard")) {
                 this.type = inputType;
@@ -174,10 +174,10 @@ public class Command extends Global{
                 pharmacy.addCommandToPharmacy(this);
                 System.out.println(GREEN + "Prix total: " + totalPrice + "€" + RESET);
                 System.out.println("-------------------------------------------");
-                saveCommand(pharmacy);
+                save(pharmacy);
                 Statistic.createCsvStatistic(pharmacy);
                 ShowProduct showProduct = new ShowProduct();
-                showProduct.saveProducts(pharmacy);
+                showProduct.save(pharmacy);
                 return true;
             } else {
                 System.out.println("Veuillez entrer une réponse valide !");
@@ -185,7 +185,8 @@ public class Command extends Global{
         }
     }
 
-    private void saveCommand(Pharmacy pharmacy) {
+    @Override
+    public void save(Pharmacy pharmacy) {
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File(FILE_PATH);
 
@@ -224,9 +225,8 @@ public class Command extends Global{
         }
     }
 
-
-
-    public static void loadCommands(Pharmacy pharmacy) {
+    @Override
+    public void load(Pharmacy pharmacy) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);

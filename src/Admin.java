@@ -16,7 +16,8 @@ public class Admin extends User {
     public void showMenu() {
         Scanner scanner = new Scanner(System.in);
         boolean quit = false;
-        Command.loadCommands(pharmacy);
+        Command commandLoad = new Command("23 janvier");
+        commandLoad.load(pharmacy);
 
         while (!quit) {
             final String RESET = "\u001B[0m";
@@ -54,7 +55,7 @@ public class Admin extends User {
                     System.out.println("\n" + BLUE + "Faire une vente.." + RESET);
                     pharmacy.getProducts();
                     Command command = new Command(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date()));
-                    if (!command.startCommand(pharmacy)) {
+                    if (!command.startCommand(pharmacy, null)) {
                         command = null;
                         System.out.println("La commande a bien été supprimée.");
                     } else {

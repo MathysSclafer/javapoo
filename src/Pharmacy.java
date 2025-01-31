@@ -18,10 +18,6 @@ public class Pharmacy{
         return name;
     }
 
-    public void addProductToPharmacy(Products product) {
-        products.add(product);
-    }
-
     public void addCommandToPharmacy(Command command) {
         commands.add(command);
     }

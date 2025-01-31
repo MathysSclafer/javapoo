@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-public class ShowProduct extends Global{
+public class ShowProduct extends Global implements Stockable, Serializable{
 
     private List<Products> productList;
     private final Scanner scanner;
@@ -86,6 +86,7 @@ public class ShowProduct extends Global{
 
     }
 
+    @Override
     public void addProduct(Pharmacy pharmacy) {
         System.out.println("\n--- Ajout d'un Produit ---");
 
@@ -109,7 +110,7 @@ public class ShowProduct extends Global{
         quickSort(pharmacy.getProducts(), 0, productList.size() - 1);
 
         // Sauvegarde
-        saveProducts(pharmacy);
+        save(pharmacy);
 
         System.out.println("✅ Produit ajouté avec succès !");
     }
@@ -147,10 +148,8 @@ public class ShowProduct extends Global{
     }
 
 
-
-
-    // Méthode pour sauvegarder la liste des produits dans le fichier JSON
-    public void saveProducts(Pharmacy pharmacy) {
+    @Override
+    public void save(Pharmacy pharmacy) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         File file = new File("stocks_pharma.json");
@@ -160,6 +159,11 @@ public class ShowProduct extends Global{
         } catch (IOException e) {
             System.err.println("❌ Erreur lors de l'écriture du fichier : " + e.getMessage());
         }
+    }
+
+    @Override
+    public void load(Pharmacy pharmacy) {
+
     }
 
     public boolean deleteProductByName(Pharmacy pharmacy) {
@@ -177,7 +181,7 @@ public class ShowProduct extends Global{
                 if (confirmation.equals("oui")) {
                     iterator.remove();
                     System.out.println("✅ Produit supprimé !");
-                    saveProducts(pharmacy);
+                    save(pharmacy);
                     return true;
                 } else {
                     System.out.println("❌ Suppression annulée.");

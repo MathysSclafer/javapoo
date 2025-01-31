@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-public class Authentication {
+public class Authentication extends Global implements Serializable{
     private static final String FILE_PATH = "users.json";
     public List<Client> users = new ArrayList<>();
     public String loggedUid = "";
@@ -18,8 +18,10 @@ public class Authentication {
     Admin admin = new Admin();
     Phamarcist Phamarcist = new Phamarcist();
 
+
     public void createUser(String status) {
-        recoveryUser();
+        Pharmacy pharmacy = null;
+        load(pharmacy);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Entrer votre nom");
         String name = scanner.nextLine().trim();
@@ -64,7 +66,7 @@ public class Authentication {
         users.add(new Client(name, prenom, email, password, uid, status));
 
         System.out.println("✅ Création du compte Client réussie !");
-        saveUser();
+        save(pharmacy);
     }
 
     private boolean isValidEmail(String email) {
@@ -82,7 +84,8 @@ public class Authentication {
     }
 
     public void showUser() {
-        recoveryUser();
+        Pharmacy pharmacy = null;
+        load(pharmacy);
         int i = 0;
         for (Client u : users) {
             i++;
@@ -91,7 +94,8 @@ public class Authentication {
     }
 
     public void loginUser() {
-        recoveryUser();
+        Pharmacy pharmacy = null;
+        load(pharmacy);
         Scanner user = new Scanner(System.in);
         System.out.println("Entrer votre email");
         String email = user.nextLine();
@@ -129,7 +133,8 @@ public class Authentication {
         }
     }
 
-    private void recoveryUser() {
+    @Override
+    public void load(Pharmacy pharmacy) {
         ObjectMapper objectMapper = new ObjectMapper();
         // Permet d'avoir un beau json
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
@@ -147,7 +152,8 @@ public class Authentication {
         }
     }
 
-    void saveUser() {
+    @Override
+    public void save(Pharmacy pharmacy) {
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File(FILE_PATH);
         try {

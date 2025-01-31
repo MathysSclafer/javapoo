@@ -13,10 +13,16 @@ public class Phamarcist extends User {
     }
 
     @Override
+    public String getName() {
+        return super.getName();
+    }
+
+    @Override
     public void showMenu() {
         Scanner scanner = new Scanner(System.in);
         boolean quit = false;
-        Command.loadCommands(pharmacy);
+        Command commandLoad = new Command("12 janvier");
+        commandLoad.load(pharmacy);
 
 
         while (!quit) {
@@ -52,7 +58,9 @@ public class Phamarcist extends User {
                     System.out.println("\n" + BLUE + "Faire une vente.." + RESET);
                     pharmacy.getProducts();
                     Command command = new Command(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date()));
-                    if (!command.startCommand(pharmacy)) {
+                    System.out.println(this.getName());
+                    System.out.println(this.getFirstName());
+                    if (!command.startCommand(pharmacy, this)) {
                         command = null;
                         System.out.println("La commande a bien été supprimée.");
                     } else {

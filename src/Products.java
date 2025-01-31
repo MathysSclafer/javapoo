@@ -93,14 +93,6 @@ public class Products extends Global{
         }
     }
 
-
-    public boolean isInStock() {
-        return this.stock > 0;      // si le stock est superieur a 1 //
-    }
-
-    public void addProduct(){
-
-    }
     public double calculateTotalPrice(int nbOfProductBought){
         return price*nbOfProductBought;
     }

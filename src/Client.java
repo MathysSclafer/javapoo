@@ -65,7 +65,7 @@ public class Client extends User {
                     Pharmacy pharmacy = new Pharmacy("Pharmacie","13 rue");
                     pharmacy.getProducts();
                     Command command = new Command(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date()));
-                    if (!command.startCommand(pharmacy)) {
+                    if (!command.startCommand(pharmacy, null)) {
                         command = null;
                         System.out.println("La commande a bien été supprimée.");
                     } else {

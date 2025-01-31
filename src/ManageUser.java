@@ -1,8 +1,7 @@
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
-public class ManageUser {
+public class ManageUser extends Global{
     private final Admin admin = new Admin();
     private final Authentication auth = new Authentication();
     private final Scanner scanner = new Scanner(System.in);
@@ -72,7 +71,8 @@ public class ManageUser {
         if (confirmation.equals("oui")) {
             if (auth.users.remove(userToDelete)) {
                 System.out.println("✅ Utilisateur supprimé avec succès !");
-                auth.saveUser();
+                Pharmacy pharmacy = null;
+                auth.save(pharmacy);
             } else {
                 System.out.println("❌ Impossible de supprimer l'utilisateur. Il n'a pas été trouvé.");
             }
@@ -113,7 +113,8 @@ public class ManageUser {
         if (confirmation.equals("oui")) {
             user.setStatus(newStatus);
             System.out.println("✅ Le rôle a été changé avec succès !");
-            auth.saveUser();
+            Pharmacy pharmacy = null;
+            auth.save(pharmacy);
         } else {
             System.out.println("❌ Modification annulée.");
         }
