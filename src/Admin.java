@@ -118,13 +118,4 @@ public class Admin extends User {
         }
     }
 
-    public void addUser() {
-        System.out.println("add user");
-    }
-    public void deleteUser() {
-        System.out.println("delete user");
-    }
-    public void manageUser() {
-        System.out.println("manage user");
-    }
 }

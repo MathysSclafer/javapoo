@@ -18,7 +18,7 @@ public class Authentication extends Global implements Serializable{
     Admin admin = new Admin();
     Phamarcist Phamarcist = new Phamarcist();
 
-
+    // Permet de créé un user
     public void createUser(String status) {
         Pharmacy pharmacy = null;
         load(pharmacy);
@@ -62,7 +62,6 @@ public class Authentication extends Global implements Serializable{
         }
         String uid = UUID.randomUUID().toString();
 
-        // Crée un utilisateur Client
         users.add(new Client(name, prenom, email, password, uid, status));
 
         System.out.println("✅ Création du compte Client réussie !");
@@ -82,7 +81,7 @@ public class Authentication extends Global implements Serializable{
         String passwordRegex = "^(?=.*[A-Z])(?=.*\\d).{8,}$";
         return Pattern.matches(passwordRegex, password);
     }
-
+    //Permet de print tous les users
     public void showUser() {
         Pharmacy pharmacy = null;
         load(pharmacy);
@@ -93,6 +92,7 @@ public class Authentication extends Global implements Serializable{
         }
     }
 
+    // Permet de se connecter
     public void loginUser() {
         Pharmacy pharmacy = null;
         load(pharmacy);
@@ -102,6 +102,7 @@ public class Authentication extends Global implements Serializable{
         System.out.println("Entrer votre mot de passe");
         String pass = user.nextLine();
 
+        // For each pour regarder tous les utilisateurs et comparer les entrée
         for (Client u : users) {
             if (u.getEmail() != null && u.getEmail().equals(email) && u.getPassword() != null && u.getPassword().equals(pass)) {
                 System.out.println("Connexion réussie !");
@@ -132,11 +133,11 @@ public class Authentication extends Global implements Serializable{
             }
         }
     }
-
+    // Permet de lire le fichier User.json et de stocker les utilisateurs dans la liste client
     @Override
     public void load(Pharmacy pharmacy) {
         ObjectMapper objectMapper = new ObjectMapper();
-        // Permet d'avoir un beau json
+        // Permet d'avoir un Json indenté
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         // Permet de ne pas avoir d'erreur en cas de chose en plus dans le json
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -151,7 +152,7 @@ public class Authentication extends Global implements Serializable{
             System.out.println("❌ Le fichier d'utilisateurs n'existe pas. Aucun utilisateur chargé.");
         }
     }
-
+    // Permet de save les clients dans le fichier json
     @Override
     public void save(Pharmacy pharmacy) {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -165,8 +166,4 @@ public class Authentication extends Global implements Serializable{
         }
     }
 
-    public void logoutUser() {
-        login = false;
-        loggedUid = null;
-    }
 }

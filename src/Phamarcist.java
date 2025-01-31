@@ -46,10 +46,10 @@ public class Phamarcist extends User {
                     "                                                                     |_|            " + RESET);
 
             System.out.println("\n" + GREEN + "===== MENU Pharmacien =====" + RESET);
-            System.out.println("1. Faire une vente");
-            System.out.println("2. Historique des ventes");
-            System.out.println("3. Stock critique");
-            System.out.println("4. Déconnexion");
+            System.out.println("1 : Faire une vente");
+            System.out.println("2 : Historique des ventes");
+            System.out.println("3 : Stock critique");
+            System.out.println("4 : Déconnexion");
             System.out.print(CYAN + "Votre choix : " + RESET);
 
             String choice = scanner.nextLine();

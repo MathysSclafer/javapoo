@@ -67,7 +67,7 @@
   "price" : 19.99,
   "stock" : 20,
   "description" : "Améliore la santé cardiovasculaire.",
-  "category" : "Non catégorisé"
+  "category" : "Vitamines"
 }, {
   "id" : 4,
   "name" : "Paracétamol",
@@ -95,12 +95,12 @@
   "price" : 12.99,
   "stock" : 10,
   "description" : "Booste le système immunitaire et réduit la fatigue.",
-  "category" : "Non catégorisé"
+  "category" : "Vitamines"
 }, {
   "id" : 14,
   "name" : "Vitamine D",
   "price" : 8.49,
   "stock" : 40,
   "description" : "Améliore la santé des os et du système immunitaire.",
-  "category" : "Non catégorisé"
+  "category" : "Vitamines"
 } ]
