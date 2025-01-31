@@ -42,7 +42,7 @@ public class Command extends Global implements Serializable{
     public boolean startCommand(Pharmacy pharmacy, Phamarcist pharmacist) {
         while (true) {
             System.out.println(YELLOW + "Veuillez choisir votre type de commande ('urgent' ou 'standard') : " + RESET);
-            this.pharmacistName = pharmacist.getName();
+
             String inputType = scanner.nextLine().trim();
             if (inputType.equalsIgnoreCase("urgent") || inputType.equalsIgnoreCase("standard")) {
                 this.type = inputType;
