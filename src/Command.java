@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 public class Command extends Global implements Serializable{
     private String date;
-    private Map<Products, Integer> products = new HashMap<>(); // Stocker Product au lieu de String
+    private Map<Products, Integer> products = new HashMap<>();
     private String type;
     private String pharmacistName;
     private String customerName;

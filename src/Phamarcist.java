@@ -56,10 +56,7 @@ public class Phamarcist extends User {
             switch (choice) {
                 case "1" :
                     System.out.println("\n" + BLUE + "Faire une vente.." + RESET);
-                    pharmacy.getProducts();
                     Command command = new Command(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date()));
-                    System.out.println(this.getName());
-                    System.out.println(this.getFirstName());
                     if (!command.startCommand(pharmacy, this)) {
                         command = null;
                         System.out.println("La commande a bien été supprimée.");
